@@ -29,16 +29,9 @@ x_train , x_test , y_train, y_test = train_test_split(x,y,test_size=0.3)
 model = RandomForestClassifier().fit(x_train,y_train)
 y_pred = model.predict(x_test)
 accuracy = metrics.accuracy_score(y_test,y_pred)
-print(accuracy)
 
 app = Flask(__name__)
 
-# with open('model.pkl', 'rb') as file:
-#     model = pickle.load(file)
-# print(type(model))
-print('Model loaded. Start serving...')
-
-print('Check http://127.0.0.1:5000/')
 
 # Define a route for the home page
 @app.route('/')
@@ -50,12 +43,10 @@ def get_data():
     val=None
     
     if request.method == 'POST':
-        print("inside post")
         # Get the file from post request
         gender = request.form['gender']
         gender_dict = {'Female':0.0, 'Male':1.0, 'Others':2.0}
         age = request.form.get('age')
-        # print(request.form['age'])
         
         hypertension = request.form['hypertension']
         hypertension_dict = {'No':0, 'Yes':1}
@@ -77,14 +68,10 @@ def get_data():
             HbA1c,
             Glucose
         ]
-        print(data_list)
         user_data = np.array(data_list)
-        print(age)
-        # print(type(newpat))
         user_data = np.nan_to_num(user_data, nan=0)
         user_data = user_data.reshape(1, -1)
         result = model.predict(user_data)
-        print(result)
         if result == 1:
             val = "Diabetes"
         else:
