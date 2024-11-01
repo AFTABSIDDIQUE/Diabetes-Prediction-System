@@ -81,4 +81,6 @@ def get_data():
             
     return render_template('frontend.html',value=val)
 
-
+# Run the app
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=9000)
