@@ -25,6 +25,7 @@ y=df["diabetes"]
 x_train , x_test , y_train, y_test = train_test_split(x,y,test_size=0.3)
 
 
+
 # RandomForest Algorithm
 model = RandomForestClassifier().fit(x_train,y_train)
 y_pred = model.predict(x_test)
@@ -80,6 +81,4 @@ def get_data():
             
     return render_template('frontend.html',value=val)
 
-# Run the app
-if __name__ == '__main__':
-    app.run(debug=True)
+
