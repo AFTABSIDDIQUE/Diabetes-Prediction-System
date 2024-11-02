@@ -1,0 +1,79 @@
+<html>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome</h1>
+        <p class="text-gray-600 mb-6">Let's predict your diabetes</p>
+        <form class="form" action="/submit" method="post">
+            <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="gender">Gender</label>
+                <select name="gender" id="gender" class="w-full p-3 bg-gray-200 text-gray-800 rounded">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="age">Age</label>
+                <input type="text" name="age" id="age" class="w-full p-3 bg-gray-200 text-gray-800 rounded">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="hypertension">Hypertension</label>
+                <select name="hypertension" id="hypertension" class="w-full p-3 bg-gray-200 text-gray-800 rounded">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="heart_disease">Heart_disease</label>
+                <select name="Heart_disease" id="heart_disease" class="w-full p-3 bg-gray-200 text-gray-800 rounded">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="smoking">Smoking</label>
+                <select name="Smoking" id="Smoking" class="w-full p-3 bg-gray-200 text-gray-800 rounded">
+                    <option value="current">Current</option>
+                    <option value="former">Not current</option>
+                    <option value="never">Former</option>
+                    <option value="no Info">Ever</option>
+                    <option value="not current">Never</option>
+                    <option value="ever">No Info</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="bmi">BMI</label>
+                <input name="bmi" type="text" id="bmi" class="w-full p-3 bg-gray-200 text-gray-800 rounded">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="hba1c">HbA1c</label>
+                <input name="HbA1c" type="text" id="HbA1c" class="w-full p-3 bg-gray-200 text-gray-800 rounded">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="glucose">Glucose</label>
+                <input name="Glucose" type="text" id="glucose" class="w-full p-3 bg-gray-200 text-gray-800 rounded">
+            </div>
+            <button type="submit" class="w-full p-3 bg-blue-500 text-white rounded">Predict</button>
+            <hr class="mb-3">
+           <strong><h2 class="result"style="text-align: center;">{{ value }}</h2></strong>
+        </form>
+    </div>
+    
+</body>
+
+<script>
+    if(document.querySelector(".result").innerText == "No Diabetes")
+    {
+      document.querySelector(".result").style.color = "Green";
+    }
+    else
+    {
+      document.querySelector(".result").style.color = "Red";
+    }
+  </script>
+</html>
